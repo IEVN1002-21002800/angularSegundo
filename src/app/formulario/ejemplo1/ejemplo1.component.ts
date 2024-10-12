@@ -17,6 +17,14 @@ interface Usuarios{
 export class Ejemplo1Component implements OnInit {
   formGroup!:FormGroup;
 
+  materia='pwa'
+  tem:string=''
+  alumnos:Usuarios={
+    nombre:'',
+    edad:0,
+    email:''
+  }
+
   constructor(private fb:FormBuilder){ }
   
   ngOnInit(): void {
@@ -30,6 +38,25 @@ export class Ejemplo1Component implements OnInit {
     })
   }
   onSubmit():void{
+    const{nombre,edad,email}=this.formGroup.value;
+    this.alumnos.nombre=nombre;
+    this.alumnos.edad=edad;
+    this.alumnos.email=email;
+    let alumnoJSON = JSON.stringify(this.alumnos);
+
     console.log(this.formGroup.value);
+
+    localStorage.setItem('materia', this.materia)
+    localStorage.setItem('alumno', alumnoJSON)
+  }
+
+  subImprimir():void{
+    this.tem=localStorage.getItem('materia')!
+
+    const alumnoGuardado=localStorage.getItem('alumno')
+    if(alumnoGuardado){
+      const alumno:Usuarios = JSON.parse(alumnoGuardado)
+    }
+    console.log(this.alumnos);
   }
 }
