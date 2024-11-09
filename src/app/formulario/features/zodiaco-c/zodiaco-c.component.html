@@ -1,0 +1,33 @@
+<p>zodiaco-c works!</p>
+<div>
+    <form>
+      <label>Nombre</label>
+      <input type="text" [(ngModel)]="nombre" name="nombre"><br>
+  
+      <label>Paterno</label>
+      <input type="text" [(ngModel)]="paterno" name="paterno"><br>
+  
+      <label>Materno</label>
+      <input type="text" [(ngModel)]="materno" name="materno"><br>
+  
+      <label>Fecha de Nacimiento</label>
+      <input type="number" [(ngModel)]="dia" name="dia" placeholder="Día" min="1" max="31">
+      <input type="number" [(ngModel)]="mes" name="mes" placeholder="Mes" min="1" max="12">
+      <input type="number" [(ngModel)]="anio" name="anio" placeholder="Año"><br>
+  
+      <label>Sexo</label>
+      <input type="radio" [(ngModel)]="sexo" name="sexo" value="Masculino">Masculino
+      <input type="radio" [(ngModel)]="sexo" name="sexo" value="Femenino">Femenino<br>
+  
+      <button type="button" (click)="calcular()">Imprimir</button>
+    </form>
+  
+    <div *ngIf="edad !== null">
+      <h3>Hola {{nombre}} {{paterno}} {{materno}}</h3>
+      <p>Tienes {{edad}} años</p>
+      <p>Tu signo zodiacal chino es {{signoZodiacalChino}}</p>
+      <img *ngIf="signoImagenChino" [src]="signoImagenChino" alt="Imagen signo zodiacal chino">
+    </div>
+  </div>
+
+  
